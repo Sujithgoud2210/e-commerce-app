@@ -19,12 +19,12 @@ public class CustomerMenu {
         System.out.println("enter contact number");
         String contactNo=scanner.next();
         Customer customer=new Customer();
-        customer.setId();
-        customer.setFirstName();
-        customer.setLastName();
-        customer.setEmail();
-        customer.setPassword();
-        customer.setContactNo();
+        customer.setId(id);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setEmail(email);
+        customer.setPassword(password);
+        customer.setContactNo(contactNo);
         scanner.close();
         return customer;
     }
