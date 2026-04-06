@@ -1,6 +1,5 @@
 package com.stschool.ecommerce.main;
 
-import com.stschool.ecommerce.service.CustomerService;
 import com.stschool.ecommerce.ui.CustomerMenu;
 
 import java.util.Scanner;
