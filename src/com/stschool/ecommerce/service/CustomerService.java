@@ -1,8 +1,5 @@
 package com.stschool.ecommerce.service;
 
-import com.stschool.ecommerce.model.Customer;
-import com.stschool.ecommerce.repository.CustomerRepository;
-
 public class CustomerService {
     public Customer handleSignup(Customer customer){
         System.out.println("customer service : "+customer);
