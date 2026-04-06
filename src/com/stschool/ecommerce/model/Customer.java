@@ -1,5 +1,7 @@
 package com.stschool.ecommerce.model;
 
+import java.util.Objects;
+
 public class Customer {
     private String id;
     private String firstName;
@@ -7,9 +9,10 @@ public class Customer {
     private String email;
     private String password;
     private String contactNo;
-    public Customer() {
 
+    public Customer() {
     }
+
 
     public String getLastName() {
         return lastName;
@@ -60,11 +63,26 @@ public class Customer {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(password, customer.password) && Objects.equals(contactNo, customer.contactNo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, password, contactNo);
+    }
+
+    @Override
     public String toString() {
         return "Customer{" +
-                "lastName='" + lastName + '\'' +
+                "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", id='" + id + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", contactNo='" + contactNo + '\'' +
                 '}';
     }
 }
