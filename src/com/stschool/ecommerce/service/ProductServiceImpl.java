@@ -49,13 +49,5 @@ public class ProductServiceImpl implements ProductService {
             .orElseThrow(()-> new ProductNotFoundException("product not found exception"));
     }
 
-    @Override
-    public List<Product> getProductByAvailability(boolean isAvailable) {
-        return List.of();
-    }
 
-    @Override
-    public List<Product> getProductByCategory() {
-        return List.of();
-    }
 }
