@@ -208,45 +208,49 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Map<String, List<Product>> groupAllProductByCategory() {
-        return products.stream()
+        return productRepository.getAll()
+                .stream()
                 .collect(Collectors.groupingBy(Product::getCategory));
     }
 
-    // Group all products by company
     @Override
     public Map<String, List<Product>> groupAllProductByCompany() {
-        return products.stream()
+        return productRepository.getAll()
+                .stream()
                 .collect(Collectors.groupingBy(Product::getCompany));
     }
 
-    // Partition products into available and unavailable
     @Override
     public Map<Boolean, List<Product>> partitionByAvailability() {
-        return products.stream()
+        return productRepository.getAll()
+                .stream()
                 .collect(Collectors.partitioningBy(Product::isAvailable));
     }
 
-    // Find the most expensive product
     @Override
     public Optional<Product> getExpensiveProduct() {
-        return products.stream()
-                .max(Comparator.comparingDouble(Product::getPrice));
+        return productRepository.getAll()
+                .stream()
+                .max(Comparator.comparingDouble(Product::getMaxRetailPrice));
     }
 
-    // Find the cheapest product
     @Override
     public Optional<Product> getCheapestProduct() {
-        return products.stream()
-                .min(Comparator.comparingDouble(Product::getPrice));
+        return productRepository.getAll()
+                .stream()
+                .min(Comparator.comparingDouble(Product::getMaxRetailPrice));
     }
 
-    // Create a Map of product ID to Product
     @Override
     public Map<Integer, Product> mapByIdForProduct() {
-        return productRepository.stream()
+        return productRepository.getAll()
+                .stream()
                 .collect(Collectors.toMap(
                         Product::getId,
-                        product -> product
+                        product -> product,
+                        (existing, replacement) -> existing
                 ));
     }
+
+
 }
