@@ -206,4 +206,47 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.groupingBy(Product::getCategory, Collectors.counting()));
     }
 
+    @Override
+    public Map<String, List<Product>> groupAllProductByCategory() {
+        return products.stream()
+                .collect(Collectors.groupingBy(Product::getCategory));
+    }
+
+    // Group all products by company
+    @Override
+    public Map<String, List<Product>> groupAllProductByCompany() {
+        return products.stream()
+                .collect(Collectors.groupingBy(Product::getCompany));
+    }
+
+    // Partition products into available and unavailable
+    @Override
+    public Map<Boolean, List<Product>> partitionByAvailability() {
+        return products.stream()
+                .collect(Collectors.partitioningBy(Product::isAvailable));
+    }
+
+    // Find the most expensive product
+    @Override
+    public Optional<Product> getExpensiveProduct() {
+        return products.stream()
+                .max(Comparator.comparingDouble(Product::getPrice));
+    }
+
+    // Find the cheapest product
+    @Override
+    public Optional<Product> getCheapestProduct() {
+        return products.stream()
+                .min(Comparator.comparingDouble(Product::getPrice));
+    }
+
+    // Create a Map of product ID to Product
+    @Override
+    public Map<Integer, Product> mapByIdForProduct() {
+        return productRepository.stream()
+                .collect(Collectors.toMap(
+                        Product::getId,
+                        product -> product
+                ));
+    }
 }
