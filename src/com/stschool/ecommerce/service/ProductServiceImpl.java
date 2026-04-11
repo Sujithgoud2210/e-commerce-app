@@ -166,38 +166,7 @@ public class ProductServiceImpl implements ProductService {
         return List.of();
     }
 
-    @Override
-    public Map<String, List<Product>> groupAllProductByCategory() {
-        return productRepository.getAll()
-                .stream()
-                .collect(Collectors.groupingBy(Product::getCategory));
 
-    }
-
-    @Override
-    public Map<String, List<Product>> groupAllProductByCompany() {
-        return Map.of();
-    }
-
-    @Override
-    public Map<Boolean, List<Product>> partitionByAvailability() {
-        return Map.of();
-    }
-
-    @Override
-    public Optional<Product> getExpensiveProduct() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<Product> getCheapestProduct() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Map<Integer, Product> mapByIdForProduct() {
-        return Map.of();
-    }
 
     @Override
     public Map<String, Long> countProductsInEachCategory() {
