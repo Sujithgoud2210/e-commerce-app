@@ -3,6 +3,7 @@ package com.stschool.ecommerce.util;
 import com.stschool.ecommerce.enums.Gender;
 import com.stschool.ecommerce.enums.Membership;
 import com.stschool.ecommerce.enums.Status;
+import com.stschool.ecommerce.model.Address;
 import com.stschool.ecommerce.model.Product;
 import com.stschool.ecommerce.model.Customer;
 
@@ -41,6 +42,18 @@ public class CsvParser {
         BufferedReader br=new BufferedReader(new FileReader(file));
         br.readLine();
         String customerData=br.readLine();
+        private Address parseAddress(String addressStr) {
+            String[] addr = addressStr.split(":");
+
+            return new Address()
+                    .setHouseNo(addr[0])
+                    .setStreetName(addr[1])
+                    .setArea(addr[2])
+                    .setPinCode(Integer.parseInt(addr[3]))
+                    .setCity(addr[4])
+                    .setDistrict(addr[5])
+                    .setCountry(addr[6]);
+        }
         while (customerData!=null){
             String[] split=customerData.split(",");
             Customer customer=new Customer();
