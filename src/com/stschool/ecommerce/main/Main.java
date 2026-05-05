@@ -1,6 +1,8 @@
 package com.stschool.ecommerce.main;
 
 
+import com.stschool.ecommerce.model.Customer;
+
 import java.util.Scanner;
 
 public class Main {
@@ -8,5 +10,6 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         String s="sujith";
         s="suji";
+
     }
 }

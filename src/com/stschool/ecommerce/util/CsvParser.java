@@ -66,7 +66,8 @@ public class CsvParser {
                     .setMembership(Membership.valueOf(split[6].trim().toUpperCase()))
                     .setStatus(Status.valueOf(split[7].trim().toUpperCase()))
                     .setAge(Byte.parseByte(split[8]))
-                    .setResidentialAddress()
+                    .setResidentialAddress(parseAddress[9])
+                    .setShippingAddress(parseAddress[10]);
         }
 
         return customers;

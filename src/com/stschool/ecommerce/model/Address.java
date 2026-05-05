@@ -45,7 +45,7 @@ public class Address {
         return pinCode;
     }
 
-    public Address setPinCode(int pinCode) {
+    public Addressc setPinCode(int pinCode) {
         this.pinCode = pinCode;
         return this;
     }
